@@ -1,0 +1,68 @@
+---
+interface Props {
+  imageSrc: string;
+  imageAlt: string;
+  eyebrow?: string;
+  heading: string;
+  subheading?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  /** 'full' = 100vh, 'short' = 40vh */
+  height?: 'full' | 'short';
+  textAlign?: 'left' | 'center';
+}
+
+const {
+  imageSrc,
+  imageAlt,
+  eyebrow,
+  heading,
+  subheading,
+  ctaLabel,
+  ctaHref,
+  height = 'full',
+  textAlign = 'left',
+} = Astro.props;
+
+const heightClass  = height === 'full' ? 'min-h-screen' : 'min-h-[40vh]';
+const alignClass   = textAlign === 'center' ? 'items-center text-center' : 'items-end';
+const paddingClass = textAlign === 'center' ? 'pb-0' : 'pb-16 md:pb-24';
+---
+
+<section class={`relative overflow-hidden flex flex-col justify-end ${heightClass}`}>
+  <!-- Background image -->
+  <img
+    src={imageSrc}
+    alt={imageAlt}
+    class="absolute inset-0 w-full h-full object-cover"
+    loading="eager"
+  />
+
+  <!-- Gradient overlay -->
+  {height === 'full' && (
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+  )}
+  {height === 'short' && (
+    <div class="absolute inset-0 bg-black/40"></div>
+  )}
+
+  <!-- Text content -->
+  <div class={`relative z-10 max-w-6xl mx-auto px-6 w-full flex flex-col ${alignClass} ${paddingClass} py-16`}>
+    {eyebrow && (
+      <span class="eyebrow text-white/80 mb-4">{eyebrow}</span>
+    )}
+    <h1 class="font-display font-light text-white text-[2rem] sm:text-4xl md:text-[4.5rem] leading-[1.1] mb-4 max-w-2xl">
+      {heading}
+    </h1>
+    {subheading && (
+      <p class="font-display italic font-light text-white/80 text-xl md:text-2xl mb-8 max-w-xl">
+        {subheading}
+      </p>
+    )}
+    {ctaLabel && ctaHref && (
+      <a href={ctaHref} class="btn-outline-white self-start">
+        {ctaLabel}
+      </a>
+    )}
+  </div>
+</section>

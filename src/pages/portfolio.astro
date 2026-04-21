@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+/*
+ * PORTFOLIO IMAGES
+ * ─────────────────────────────────────────────────────────────────────────────
+ * When real photography arrives, add JPG files to:
+ *   public/images/portfolio/
+ *
+ * Naming convention:
+ *   project-01-a.jpg   (primary / hero shot for project 1)
+ *   project-01-b.jpg   (second shot for project 1)
+ *   project-02-a.jpg   … and so on
+ *
+ * Then replace each `src` below with e.g. `/images/portfolio/project-01-a.jpg`
+ * No other structural changes are needed.
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+
+const projects = [
+  { src: 'https://picsum.photos/seed/kpi-port-1/800/1050', alt: 'Project 1 — living room', name: 'Project 01', aspect: 'aspect-[4/5]' },
+  { src: 'https://picsum.photos/seed/kpi-port-2/800/600',  alt: 'Project 1 — dining room', name: 'Project 01', aspect: 'aspect-[4/3]' },
+  { src: 'https://picsum.photos/seed/kpi-port-3/800/1000', alt: 'Project 2 — primary bedroom', name: 'Project 02', aspect: 'aspect-[4/5]' },
+  { src: 'https://picsum.photos/seed/kpi-port-4/800/800',  alt: 'Project 2 — kitchen', name: 'Project 02', aspect: 'aspect-square' },
+  { src: 'https://picsum.photos/seed/kpi-port-5/800/550',  alt: 'Project 3 — entry', name: 'Project 03', aspect: 'aspect-[3/2]' },
+  { src: 'https://picsum.photos/seed/kpi-port-6/800/1050', alt: 'Project 3 — study', name: 'Project 03', aspect: 'aspect-[4/5]' },
+  { src: 'https://picsum.photos/seed/kpi-port-7/800/800',  alt: 'Project 4 — living area', name: 'Project 04', aspect: 'aspect-square' },
+  { src: 'https://picsum.photos/seed/kpi-port-8/800/600',  alt: 'Project 4 — master bath', name: 'Project 04', aspect: 'aspect-[4/3]' },
+  { src: 'https://picsum.photos/seed/kpi-port-9/800/1000', alt: 'Project 5 — great room', name: 'Project 05', aspect: 'aspect-[4/5]' },
+  { src: 'https://picsum.photos/seed/kpi-port-10/800/800', alt: 'Project 5 — mudroom', name: 'Project 05', aspect: 'aspect-square' },
+  { src: 'https://picsum.photos/seed/kpi-port-11/800/550', alt: 'Project 6 — nursery', name: 'Project 06', aspect: 'aspect-[3/2]' },
+  { src: 'https://picsum.photos/seed/kpi-port-12/800/1050',alt: 'Project 6 — home office', name: 'Project 06', aspect: 'aspect-[4/5]' },
+];
+---
+
+<!-- Portfolio images will be replaced with real photography.
+     Add images to public/images/portfolio/ and update the src paths here. -->
+
+<Layout
+  title="Portfolio | Kate Pinney Interiors"
+  description="A selection of completed residential interior design projects by Kate Pinney Interiors, Denver Colorado."
+>
+  <!-- Page hero: short, text-only, centered -->
+  <section class="min-h-[40vh] flex flex-col items-center justify-center text-center px-6 py-16 border-b border-divider">
+    <h1 class="font-display font-light text-[2.25rem] md:text-[4.5rem] leading-[1.1] mb-4">Portfolio</h1>
+    <p class="font-display italic font-light text-lg md:text-2xl text-muted">
+      A selection of completed residential projects
+    </p>
+  </section>
+
+  <!-- Portfolio grid: 2-column desktop, 1-column mobile -->
+  <section class="max-w-6xl mx-auto px-6 py-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {projects.map(project => (
+        <div class="group relative overflow-hidden">
+          <img
+            src={project.src}
+            alt={project.alt}
+            class={`w-full object-cover ${project.aspect} transition-transform duration-500 group-hover:scale-105`}
+            loading="lazy"
+          />
+          <!-- Minimal hover overlay with project name -->
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-all duration-300 flex items-end">
+            <span class="font-body text-[0.75rem] tracking-widest uppercase font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-5">
+              {project.name}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>

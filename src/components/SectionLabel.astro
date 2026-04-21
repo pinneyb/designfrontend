@@ -1,0 +1,20 @@
+---
+interface Props {
+  label: string;
+  center?: boolean;
+}
+const { label, center = false } = Astro.props;
+---
+
+{center ? (
+  <div class="flex items-center justify-center gap-4 mb-6">
+    <div class="w-8 h-px bg-divider"></div>
+    <span class="eyebrow">{label}</span>
+    <div class="w-8 h-px bg-divider"></div>
+  </div>
+) : (
+  <div class="flex items-center gap-4 mb-6">
+    <span class="eyebrow">{label}</span>
+    <div class="h-px bg-divider w-12"></div>
+  </div>
+)}

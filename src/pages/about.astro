@@ -1,0 +1,125 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionLabel from '../components/SectionLabel.astro';
+---
+
+<Layout
+  title="About | Kate Pinney Interiors"
+  description="Meet Kate Pinney — Denver interior designer creating warm, livable homes designed around the way you actually live."
+>
+  <!-- Page hero: short, text-only, centered -->
+  <section class="min-h-[40vh] flex flex-col items-center justify-center text-center px-6 py-16 border-b border-divider">
+    <h1 class="font-display font-light text-[2.25rem] md:text-[4.5rem] leading-[1.1]">About</h1>
+  </section>
+
+  <!-- Section 1: Bio — 2-column -->
+  <section class="py-20 md:py-32">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
+        <!-- Placeholder: large headshot of Kate Pinney (replace with real photo at public/images/kate-headshot.jpg) -->
+        <img
+          src="https://picsum.photos/seed/kpi-about/600/750"
+          alt="Kate Pinney — Denver Interior Designer"
+          class="w-full object-cover aspect-[4/5] md:sticky md:top-20"
+          loading="eager"
+        />
+        <div class="pt-4">
+          <SectionLabel label="Kate Pinney" />
+          <h2 class="font-display font-light text-[1.75rem] md:text-[3rem] leading-[1.15] mb-8">
+            Designing Homes That Tell Your Story
+          </h2>
+
+          <p class="font-body font-light text-base leading-[1.7] text-text mb-5">
+            Kate Pinney grew up surrounded by beautifully made things — her mother's eye
+            for arrangement and her father's appreciation for craftsmanship left a quiet
+            impression that eventually became a career. After studying interior architecture
+            in Denver and working alongside some of Colorado's most respected design firms,
+            Kate launched Kate Pinney Interiors to bring a more personal, client-centered
+            approach to residential design.
+          </p>
+
+          <p class="font-body font-light text-base leading-[1.7] text-text mb-5">
+            Her philosophy is simple: a beautiful home should first be a livable one.
+            That means listening carefully before drawing a single line — understanding
+            how you move through your mornings, what you reach for instinctively, where
+            the light falls in the afternoon. Design decisions follow from those truths,
+            not from trend books.
+          </p>
+
+          <p class="font-body font-light text-base leading-[1.7] text-text mb-5">
+            Kate works primarily with Denver-area families on full-home redesigns and
+            curated room transformations. Every project is a true collaboration: she
+            brings the expertise, her clients bring the stories, and together they build
+            spaces that feel genuinely and unmistakably theirs.
+          </p>
+
+          <p class="font-body font-light text-base leading-[1.7] text-text">
+            When she's not on-site or deep in a floor plan, you'll find Kate hiking
+            the foothills, scouring vintage markets for one-of-a-kind finds, or cooking
+            elaborate Sunday dinners with her family.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Process steps — 3-column -->
+  <section class="py-20 md:py-28 bg-surface border-t border-divider">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <SectionLabel label="The Process" center />
+        <h2 class="font-display font-light text-[1.75rem] md:text-[2.5rem] leading-[1.15]">
+          How We Work Together
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-16 divide-y md:divide-y-0 divide-divider">
+
+        <!-- Step 1 -->
+        <div class="py-8 md:py-0">
+          <span class="eyebrow text-accent-dark block mb-3">Step 01</span>
+          <h3 class="font-body font-medium text-base tracking-wide uppercase mb-3">Discovery</h3>
+          <p class="font-body font-light text-base leading-[1.7] text-muted">
+            We begin with a deep-dive conversation about how you live, what you love,
+            and what you're ready to leave behind. This listening phase shapes everything
+            that follows.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="py-8 md:py-0">
+          <span class="eyebrow text-accent-dark block mb-3">Step 02</span>
+          <h3 class="font-body font-medium text-base tracking-wide uppercase mb-3">Design</h3>
+          <p class="font-body font-light text-base leading-[1.7] text-muted">
+            Kate develops a cohesive concept — floor plans, material palettes, furniture
+            selections, and lighting plans — presented in a clear, visual format that
+            makes collaboration easy and decisions confident.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="py-8 md:py-0">
+          <span class="eyebrow text-accent-dark block mb-3">Step 03</span>
+          <h3 class="font-body font-medium text-base tracking-wide uppercase mb-3">Installation</h3>
+          <p class="font-body font-light text-base leading-[1.7] text-muted">
+            On installation day, Kate and her team handle every detail — from furniture
+            placement to the final flourish of fresh flowers — so you can walk in to a
+            home that's completely, beautifully finished.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: CTA -->
+  <section class="py-24 text-center border-t border-divider">
+    <div class="max-w-xl mx-auto px-6">
+      <h2 class="font-display italic font-light text-[2rem] md:text-[2.5rem] leading-[1.15] mb-8">
+        Ready to Start Your Project?
+      </h2>
+      <a href="/contact" class="btn-outline-dark">Get in Touch</a>
+    </div>
+  </section>
+
+</Layout>

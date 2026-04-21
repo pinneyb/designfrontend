@@ -1,0 +1,77 @@
+---
+const navLinks = [
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'About',     href: '/about'     },
+  { label: 'Contact',   href: '/contact'   },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-surface/90 backdrop-blur-sm border-b border-divider">
+  <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- Logo: swap to SVG once public/images/logo/logo.svg is provided -->
+    <a href="/" class="flex items-center gap-3 no-underline group">
+      <img
+        src="/images/logo/logo.svg"
+        alt="Kate Pinney Interiors"
+        class="h-8 w-auto hidden [.logo-loaded_&]:block"
+        onerror="this.style.display='none'"
+      />
+      <span class="font-display text-base md:text-lg font-light tracking-wide text-text group-hover:text-accent-dark transition-colors">
+        Kate Pinney Interiors
+      </span>
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden md:flex items-center gap-10 list-none m-0 p-0">
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class:list={['nav-link', { 'text-text': currentPath.startsWith(link.href) }]}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="menu-toggle"
+      class="md:hidden flex flex-col gap-[5px] p-2"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <span class="block w-6 h-px bg-text transition-all duration-200"></span>
+      <span class="block w-6 h-px bg-text transition-all duration-200"></span>
+      <span class="block w-4 h-px bg-text transition-all duration-200"></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-divider bg-surface">
+    <ul class="list-none m-0 p-0 flex flex-col">
+      {navLinks.map(link => (
+        <li>
+          <a href={link.href} class="nav-link block px-6 py-4 border-b border-divider last:border-0">
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu   = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden', isOpen);
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+</script>

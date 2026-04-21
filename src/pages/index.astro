@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionLabel from '../components/SectionLabel.astro';
+import PortfolioGrid from '../components/PortfolioGrid.astro';
+
+const previewItems = [
+  { src: 'https://picsum.photos/seed/kpi-p1/800/800', alt: 'Interior project preview 1', name: 'Project One' },
+  { src: 'https://picsum.photos/seed/kpi-p2/800/800', alt: 'Interior project preview 2', name: 'Project Two' },
+  { src: 'https://picsum.photos/seed/kpi-p3/800/800', alt: 'Interior project preview 3', name: 'Project Three' },
+];
+---
+
+<Layout
+  title="Kate Pinney Interiors | Denver Interior Design"
+  description="Thoughtful, livable residential interior design in Denver, Colorado. Spaces designed around how you actually live."
+>
+
+  <!-- Section 1: Hero -->
+  <!-- Placeholder: warm neutral-toned interior room (replace with real hero photo) -->
+  <Hero
+    imageSrc="https://picsum.photos/seed/kpi-hero/1600/900"
+    imageAlt="Warm, beautifully designed living room — Kate Pinney Interiors"
+    eyebrow="Interior Design · Denver, Colorado"
+    heading="Spaces That Feel Like You"
+    subheading="Thoughtful, livable interiors designed around how you actually live."
+    ctaLabel="View Portfolio"
+    ctaHref="/portfolio"
+    height="full"
+    textAlign="left"
+  />
+
+  <!-- Section 2: Intro / Philosophy -->
+  <section class="py-20 md:py-32">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+      <SectionLabel label="The Studio" center />
+      <h2 class="font-display font-light text-[1.75rem] sm:text-[2.25rem] md:text-[3rem] leading-[1.15] mb-6">
+        Design That Starts With Listening
+      </h2>
+      <p class="font-body font-light text-base leading-[1.7] text-text mb-4">
+        Every home holds a story waiting to be told. Kate approaches each project by first
+        understanding how a family actually moves through their space — the morning routines,
+        the gatherings, the quiet corners — and lets that shape every design decision.
+      </p>
+      <p class="font-body font-light text-base leading-[1.7] text-text mb-4">
+        The result is never a showroom. It's a home that feels unmistakably yours: warm,
+        considered, and built to be lived in.
+      </p>
+      <hr class="border-0 border-t border-divider mt-12" />
+    </div>
+  </section>
+
+  <!-- Section 3: Portfolio Preview -->
+  <section class="pb-20 md:pb-32">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-10">
+        <SectionLabel label="Selected Work" />
+      </div>
+      <!-- Placeholder images: replace with real portfolio photography from public/images/portfolio/ -->
+      <PortfolioGrid items={previewItems} columns={3} />
+      <div class="mt-10 text-center">
+        <a href="/portfolio" class="font-body text-sm tracking-widest uppercase text-accent-dark hover:text-text transition-colors">
+          See All Projects &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: About Teaser -->
+  <section class="py-20 md:py-32 bg-surface">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+        <!-- Placeholder: headshot of Kate Pinney (replace with real photo) -->
+        <img
+          src="https://picsum.photos/seed/kpi-kate/600/700"
+          alt="Kate Pinney — Interior Designer"
+          class="w-full object-cover aspect-[3/4]"
+          loading="lazy"
+        />
+        <div>
+          <SectionLabel label="About Kate" />
+          <h3 class="font-display font-normal text-[1.75rem] leading-[1.2] mb-6">Meet Kate</h3>
+          <p class="font-body font-light text-base leading-[1.7] text-text mb-4">
+            Kate Pinney is a Denver-based interior designer with a passion for creating
+            homes that are as beautiful as they are livable. With an eye for warmth and
+            a deep respect for how families use their spaces, she brings a thoughtful,
+            personal approach to every project.
+          </p>
+          <p class="font-body font-light text-base leading-[1.7] text-text mb-8">
+            From full-home redesigns to curated single-room refreshes, Kate brings the
+            same care and attention to detail to every client relationship.
+          </p>
+          <a href="/about" class="font-body text-sm tracking-widest uppercase text-accent-dark hover:text-text transition-colors">
+            Learn more about the studio &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Contact CTA -->
+  <section class="py-24 md:py-36 bg-surface border-t border-divider text-center">
+    <div class="max-w-xl mx-auto px-6">
+      <h2 class="font-display italic font-light text-[1.75rem] sm:text-[2.25rem] md:text-[3rem] leading-[1.15] mb-8">
+        Let's Create Something Beautiful
+      </h2>
+      <a href="/contact" class="btn-outline-dark">Get in Touch</a>
+    </div>
+  </section>
+
+</Layout>
