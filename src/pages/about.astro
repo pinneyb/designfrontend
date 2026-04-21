@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SectionLabel from '../components/SectionLabel.astro';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout
@@ -30,12 +32,21 @@ import SectionLabel from '../components/SectionLabel.astro';
           </h2>
 
           <p class="font-body font-light text-base leading-[1.7] text-text mb-5">
-            Kate Pinney grew up surrounded by beautifully made things — her mother's eye
-            for arrangement and her father's appreciation for craftsmanship left a quiet
-            impression that eventually became a career. After studying interior architecture
-            in Denver and working alongside some of Colorado's most respected design firms,
-            Kate launched Kate Pinney Interiors to bring a more personal, client-centered
-            approach to residential design.
+            Kate's path to interior design is anything but conventional — and that's
+            exactly what shapes her work. After graduating from the University of Virginia,
+            she built a career in journalism, earning a master's degree from Georgetown
+            University and working for National Geographic. That time sharpened her eye
+            for detail and her instinct for finding the story beneath the surface — skills
+            that translate directly to how she approaches a home.
+          </p>
+
+          <p class="font-body font-light text-base leading-[1.7] text-text mb-5">
+            Before settling in Denver, Kate lived abroad — teaching in England and working
+            at an Aboriginal art gallery in Australia. Those years of moving through
+            different cultures and spaces gave her a deep appreciation for the way a room
+            can hold meaning, reflect identity, and make people feel genuinely at home.
+            After returning to the States, she followed that instinct into a master's
+            program in interior design and never looked back.
           </p>
 
           <p class="font-body font-light text-base leading-[1.7] text-text mb-5">
@@ -46,17 +57,11 @@ import SectionLabel from '../components/SectionLabel.astro';
             not from trend books.
           </p>
 
-          <p class="font-body font-light text-base leading-[1.7] text-text mb-5">
+          <p class="font-body font-light text-base leading-[1.7] text-text">
             Kate works primarily with Denver-area families on full-home redesigns and
             curated room transformations. Every project is a true collaboration: she
             brings the expertise, her clients bring the stories, and together they build
             spaces that feel genuinely and unmistakably theirs.
-          </p>
-
-          <p class="font-body font-light text-base leading-[1.7] text-text">
-            When she's not on-site or deep in a floor plan, you'll find Kate hiking
-            the foothills, scouring vintage markets for one-of-a-kind finds, or cooking
-            elaborate Sunday dinners with her family.
           </p>
         </div>
       </div>
@@ -118,7 +123,7 @@ import SectionLabel from '../components/SectionLabel.astro';
       <h2 class="font-display italic font-light text-[2rem] md:text-[2.5rem] leading-[1.15] mb-8">
         Ready to Start Your Project?
       </h2>
-      <a href="/contact" class="btn-outline-dark">Get in Touch</a>
+      <a href={`${base}contact/`} class="btn-outline-dark">Get in Touch</a>
     </div>
   </section>
 
