@@ -1,8 +1,12 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
+const isGitHubPages = process.env.DEPLOY_TARGET === 'github';
+
 export default defineConfig({
   integrations: [tailwind()],
-  base: '/designfrontend/',
-  site: 'https://pinneyb.github.io',
+  ...(isGitHubPages && {
+    base: '/designfrontend/',
+    site: 'https://pinneyb.github.io',
+  }),
 });
