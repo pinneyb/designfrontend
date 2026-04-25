@@ -5,6 +5,9 @@ const isGitHubPages = process.env.DEPLOY_TARGET === 'github';
 
 export default defineConfig({
   integrations: [tailwind()],
+  build: {
+    assets: 'assets',
+  },
   ...(isGitHubPages && {
     base: '/designfrontend/',
     site: 'https://pinneyb.github.io',
