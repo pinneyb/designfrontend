@@ -135,42 +135,33 @@ import SectionLabel from '../components/SectionLabel.astro';
 </Layout>
 
 <script>
-  const form        = document.getElementById('contact-form') as HTMLFormElement;
-  const successMsg  = document.getElementById('form-success')!;
-  const errorMsg    = document.getElementById('form-error')!;
-  const submitBtn   = document.getElementById('submit-btn') as HTMLButtonElement;
+  import emailjs from '@emailjs/browser';
 
-  // Endpoint is injected at build time via Astro's env handling.
-  // Swap this URL when moving away from Formspree.
-  const endpoint = import.meta.env.PUBLIC_FORMSPREE_ENDPOINT as string;
+  const form       = document.getElementById('contact-form') as HTMLFormElement;
+  const successMsg = document.getElementById('form-success')!;
+  const errorMsg   = document.getElementById('form-error')!;
+  const submitBtn  = document.getElementById('submit-btn') as HTMLButtonElement;
+
+  const publicKey          = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY as string;
+  const serviceId          = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID as string;
+  const notificationTplId  = import.meta.env.PUBLIC_EMAILJS_NOTIFICATION_TEMPLATE_ID as string;
+  const autoreplyTplId     = import.meta.env.PUBLIC_EMAILJS_AUTOREPLY_TEMPLATE_ID as string;
+
+  emailjs.init({ publicKey });
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     successMsg.classList.add('hidden');
     errorMsg.classList.add('hidden');
 
-    if (!endpoint) {
-      errorMsg.classList.remove('hidden');
-      return;
-    }
-
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
 
     try {
-      const data = new FormData(form);
-      const res  = await fetch(endpoint, {
-        method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
-      });
-
-      if (res.ok) {
-        form.reset();
-        successMsg.classList.remove('hidden');
-      } else {
-        errorMsg.classList.remove('hidden');
-      }
+      await emailjs.sendForm(serviceId, notificationTplId, form);
+      await emailjs.sendForm(serviceId, autoreplyTplId, form);
+      form.reset();
+      successMsg.classList.remove('hidden');
     } catch {
       errorMsg.classList.remove('hidden');
     } finally {
